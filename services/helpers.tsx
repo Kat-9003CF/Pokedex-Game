@@ -8,11 +8,11 @@ export interface newPokemon {
 }
 
 export function getPokemon(id: number) {
-  let chosen: newPokemon;
+  let chosenIndex: number;
   Object.keys(pokemonData).forEach((key) => {
     if (pokemonData[key].id === id) {
-      chosen = pokemonData[key];
+      chosenIndex = pokemonData.indexOf(pokemonData[key]);
     }
   });
-  return chosen;
+  return chosenIndex;
 }

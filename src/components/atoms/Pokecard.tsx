@@ -56,4 +56,5 @@ const CardWrapper = styled.div`
     height: 130px;
     margin: -10px;
   }
+  
 `;
