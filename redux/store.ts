@@ -13,8 +13,8 @@ interface StoreState {
 }
 
 export const useStore = create<StoreState>()((set) => ({
-  yourPokemonId: 4,
-  computerPokemonId: 7,
+  yourPokemonId: null,
+  computerPokemonId: null,
   setYourPokemonId: (id) => set((state) => ({yourPokemonId: id})),
   setComputerPokemonId: (id) => set((state) => ({ computerPokemonId: id })),
   result: "",
