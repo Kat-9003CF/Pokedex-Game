@@ -1,6 +1,5 @@
 import { VoidExpression } from "typescript";
 import create from "zustand";
-import {pokemonData} from "../src/components/atoms/data"
 
 
 interface StoreState {

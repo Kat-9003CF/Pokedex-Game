@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useStore } from "../../../redux/store";
 const POKE_IMG = "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/";
 
 interface newPokemon {
@@ -7,6 +8,7 @@ interface newPokemon {
   name: string;
   type: string;
   level: number;
+  onClick: 
 }
 
 export default function Pokecard({pokemon}: {pokemon: newPokemon[]}) {
@@ -34,6 +36,8 @@ export default function Pokecard({pokemon}: {pokemon: newPokemon[]}) {
   function pascalCase(text) {
     return text.charAt(0).toUpperCase() + text.slice(1);
   }
+
+
 
   return (
     <CardWrapper>

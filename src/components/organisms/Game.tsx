@@ -3,7 +3,7 @@ import { Pokecard, pokemonData } from "../atoms/index";
 import styled from "styled-components";
 import { animate, motion } from "framer-motion";
 import { useStore } from "../../../redux/store";
-import { getPokemon, newPokemon } from "../../../services/helpers";
+import { newPokemon, getPokemonIndex } from "../../../services/helpers";
 
 export default function Game() {
   const {
@@ -15,12 +15,22 @@ export default function Game() {
 
   return (
     <div>
-      {yourPokemonId ? <div><h2>Battle!</h2>
-      <GameWrapper>
-        <CardWrapper><Pokecard pokemon={pokemonData[yourPokemonId]} /></CardWrapper> 
-        <p>vs</p>
-        {computerPokemonId ? <CardWrapper><Pokecard pokemon={pokemonData[computerPokemonId]} /></CardWrapper> : null}
-      </GameWrapper></div>: null}
+      {yourPokemonId ? (
+        <div>
+          <h2>Battle!</h2>
+          <GameWrapper>
+            <CardWrapper>
+              <Pokecard pokemon={pokemonData[getPokemonIndex(yourPokemonId)]} />
+            </CardWrapper>
+            <p>vs</p>
+            {computerPokemonId ? (
+              <CardWrapper>
+                <Pokecard pokemon={pokemonData[getPokemonIndex(computerPokemonId)]} />
+              </CardWrapper>
+            ) : null}
+          </GameWrapper>
+        </div>
+      ) : null}
     </div>
   );
 }
@@ -30,15 +40,15 @@ const GameWrapper = styled.div`
   justify-content: center;
 `;
 
-const CardWrapper = styled('Pokecard')`
-img{
+const CardWrapper = styled("Pokecard")`
+  img {
     width: 150px;
     height: 150px;
-}
-    border-radius: 40px;
-    min-width: 200px;
-    max-width: 250px;
-    /* box-shadow: 7px 7px 7px 7px rgba(0, 0, 0, 0.56); */
-    transition: 0.2s ease-in-out;
-    gap: 200px;
-`
+  }
+  border-radius: 40px;
+  min-width: 200px;
+  max-width: 250px;
+  /* box-shadow: 7px 7px 7px 7px rgba(0, 0, 0, 0.56); */
+  transition: 0.2s ease-in-out;
+  gap: 200px;
+`;
