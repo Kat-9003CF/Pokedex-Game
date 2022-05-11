@@ -14,11 +14,6 @@ export default function Game() {
     setComputerPokemonId,
   } = useStore((state) => state);
 
-  function handleClick(e: React.FormEvent<HTMLButtonElement>) {
-    e.preventDefault();
-    console.log(yourPokemon);
-  }
-
   return (
     <div>
       <h2>Battle!</h2>
