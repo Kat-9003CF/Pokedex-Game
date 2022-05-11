@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Pokecard, pokemonData, Pokedex } from "../src/components/atoms/index";
+import { Pokecard, pokemonData, Pokedex, Game } from "../src/components/atoms/index";
 import styled from "styled-components";
 
 function App() {
@@ -14,6 +14,7 @@ function App() {
       <Wrapper>
         <h1>Pokedex Game</h1>
         <Pokedex />
+        <Game />
       </Wrapper>
     </main>
   );
