@@ -27,7 +27,6 @@ export default function Pokecard({
         pokeID = "00" + idString;
         break;
     }
-    console.log(pokeID)
     return pokeID
   }
   const pokeID = format(`${id}`);
