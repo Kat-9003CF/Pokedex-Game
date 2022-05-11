@@ -7,8 +7,7 @@ interface newPokemon {
   id: number;
   name: string;
   type: string;
-  level: number;
-  onClick: 
+  level: number; 
 }
 
 export default function Pokecard({pokemon}: {pokemon: newPokemon[]}) {
