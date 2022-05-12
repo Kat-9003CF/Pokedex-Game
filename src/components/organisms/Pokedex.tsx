@@ -9,7 +9,6 @@ export default function Pokedex() {
 
     function handleClick(id:number){
         setYourPokemonId(id)
-        console.log('click')
     }
 
   return (

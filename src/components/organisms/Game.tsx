@@ -3,24 +3,38 @@ import { Pokecard, pokemonData } from "../atoms/index";
 import styled from "styled-components";
 import { animate, motion, AnimatePresence } from "framer-motion";
 import { useStore } from "../../../redux/store";
-import { newPokemon, getPokemonIndex } from "../../../services/helpers";
-import { useState } from "react";
+import { getPokemonIndex, newPokemon } from "../../../services/helpers";
+import { useState, useEffect } from "react";
 
 export default function Game() {
   const {
     yourPokemonId,
     setYourPokemonId,
-    computerPokemonId,
-    setComputerPokemonId,
+    computerPokemonIndex,
+    setComputerPokemonIndex,
   } = useStore((state) => state);
 
   const [imageLoading, setImageLoading] = useState(true);
   const [pulsing, setPulsing] = useState(true);
+  
 
   const imageLoaded = () => {
     setImageLoading(false);
     setTimeout(() => setPulsing(false), 600);
   };
+
+  function handleClick(e: React.FormEvent<HTMLButtonElement>) {
+    e.preventDefault();
+    computerTurn()
+  }
+  let computerChoice:newPokemon
+
+  function computerTurn(){
+    let max:number = pokemonData.length;
+    computerChoice = pokemonData[Math.floor(Math.random() * max)];
+    console.log(computerChoice) 
+  }
+
 
   return (
     <div>
@@ -51,7 +65,7 @@ export default function Game() {
                 </motion.div>
               </CardWrapper>
               <p>vs</p>
-              {computerPokemonId ? (
+              {computerChoice ? (
                 <CardWrapper
                 className={`${pulsing ? "pulse" : ""} loadable`}
                 style={{ width: "600px", background: "#ccc" }}
@@ -73,7 +87,9 @@ export default function Game() {
                   />
                 </motion.div>
               </CardWrapper>
-              ) : null}
+              ) : 
+              <button onClick={handleClick}>Choose your opponent</button> 
+               }
             </GameWrapper>
           </AnimatePresence>
         </HeaderWrapper>
