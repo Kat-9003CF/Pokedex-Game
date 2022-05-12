@@ -10,7 +10,7 @@ interface newPokemon {
   level: number; 
 }
 
-export default function Pokecard({pokemon}: {pokemon: newPokemon[]}) {
+export default function Pokecard({pokemon}: {pokemon: newPokemon}) {
   
   function format(id) {
     let idString:string = id.toString();
@@ -56,7 +56,7 @@ const CardWrapper = styled.div`
     font-size: 130%;
   }
   img {
-    height: 130px;
+    height: 110px;
     margin: -10px;
   }
   
