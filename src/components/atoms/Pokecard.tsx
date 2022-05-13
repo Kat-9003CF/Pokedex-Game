@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useStore } from "../../../redux/store";
 const POKE_IMG = "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/";
 
+
 interface newPokemon {
   id: number;
   name: string;
