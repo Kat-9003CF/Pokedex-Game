@@ -7,7 +7,9 @@ export interface newPokemon {
   level: number;
 }
 
-export function getPokemon(id: number) {
+
+
+export function getPokemonIndex(id: number) {
   let chosenIndex: number;
   Object.keys(pokemonData).forEach((key) => {
     if (pokemonData[key].id === id) {
@@ -16,3 +18,4 @@ export function getPokemon(id: number) {
   });
   return chosenIndex;
 }
+

@@ -1,15 +1,17 @@
 import React from "react";
 import styled from "styled-components";
+import { useStore } from "../../../redux/store";
 const POKE_IMG = "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/";
+
 
 interface newPokemon {
   id: number;
   name: string;
   type: string;
-  level: number;
+  level: number; 
 }
 
-export default function Pokecard({pokemon}: {pokemon: newPokemon[]}) {
+export default function Pokecard({pokemon}: {pokemon: newPokemon}) {
   
   function format(id) {
     let idString:string = id.toString();
@@ -35,6 +37,8 @@ export default function Pokecard({pokemon}: {pokemon: newPokemon[]}) {
     return text.charAt(0).toUpperCase() + text.slice(1);
   }
 
+
+
   return (
     <CardWrapper>
       <h2>{pokemon["name"]}</h2>
@@ -53,7 +57,7 @@ const CardWrapper = styled.div`
     font-size: 130%;
   }
   img {
-    height: 130px;
+    height: 110px;
     margin: -10px;
   }
   

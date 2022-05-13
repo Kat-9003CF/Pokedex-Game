@@ -2,13 +2,20 @@ import React from "react";
 import { Pokecard, pokemonData } from "../atoms/index";
 import styled from "styled-components";
 import { animate, motion } from "framer-motion";
+import { useStore } from "../../../redux/store";
 
 export default function Pokedex() {
+    const {yourPokemonId, setYourPokemonId} = useStore((state) => state);
+
+    function handleClick(id:number){
+        setYourPokemonId(id)
+    }
+
   return (
     <PokedexWrapper>
       {pokemonData.map((p) => (
-        <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 1 }}>
-          <SingleCardWrapper>
+        <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 1 }} >
+          <SingleCardWrapper onClick={() => handleClick(p.id)}>
             <Pokecard pokemon = {p} />
           </SingleCardWrapper>
         </motion.div>
@@ -21,7 +28,7 @@ const SingleCardWrapper = styled.div`
   border: 1px solid ${({ theme }) => theme.colours.borderGrey};
   border-radius: 40px;
   min-width: 200px;
-  max-width: 250px;
+  max-width: 150px;
   box-shadow: 7px 10px 12px -5px rgba(0, 0, 0, 0.56);
   transition: 0.2s ease-in-out;
 
