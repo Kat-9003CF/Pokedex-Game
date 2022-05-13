@@ -9,7 +9,7 @@ export default function Pokedex() {
       {pokemonData.map((p) => (
         <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 1 }}>
           <SingleCardWrapper>
-            <Pokecard id={p.id} name={p.name} type={p.type} level={p.level} />
+            <Pokecard pokemon = {p} />
           </SingleCardWrapper>
         </motion.div>
       ))}
