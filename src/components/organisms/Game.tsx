@@ -3,8 +3,9 @@ import { Pokecard, pokemonData } from "../atoms/index";
 import styled from "styled-components";
 import { animate, motion, AnimatePresence } from "framer-motion";
 import { useStore } from "../../../redux/store";
-import { getPokemonIndex, newPokemon } from "../../../services/helpers";
-import { useState, useEffect } from "react";
+import { getPokemonIndex } from "../../../services/helpers";
+import { useState } from "react";
+import PokeballImage from "../../../public/pokeball.svg";
 
 export default function Game() {
   const {
@@ -17,7 +18,7 @@ export default function Game() {
   const [imageLoading, setImageLoading] = useState(true);
   const [pulsing, setPulsing] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
-  
+  const [compChosen, setCompChosen] = useState(false);
 
   const imageLoaded = () => {
     setImageLoading(false);
@@ -26,28 +27,28 @@ export default function Game() {
 
   function handleClick(e: React.FormEvent<HTMLButtonElement>) {
     e.preventDefault();
-    computerTurn()
+    computerTurn();
     setIsVisible(true);
+    setCompChosen(true);
   }
-  let computerChoice:newPokemon
+  //   let computerChoice: newPokemon;
 
-  function computerTurn(){
-    let max:number = pokemonData.length;
-    let newId:number = Math.floor(Math.random() * max);
-    setComputerPokemonIndex(newId)
-    console.log(newId)
+  function computerTurn() {
+    let max: number = pokemonData.length;
+    let newId: number = Math.floor(Math.random() * max);
+    setComputerPokemonIndex(newId);
+    console.log(newId);
   }
-
 
   return (
     <div>
-      {yourPokemonId ? 
+      {yourPokemonId ? (
         <HeaderWrapper>
           (<h1>Battle!</h1>
           <AnimatePresence>
             <GameWrapper>
               <CardWrapper
-                className={`${pulsing ? "pulse" : ""} loadable`}
+                className={`/${pulsing ? "pulse" : ""} loadable`}
                 style={{ width: "600px", background: "#ccc" }}
               >
                 <motion.div
@@ -57,12 +58,10 @@ export default function Game() {
                     height: imageLoading ? "6rem" : "auto",
                     opacity: imageLoading ? 0 : 1,
                   }}
-                  transition={
-                    { opacity: { delay: 0.2, duration: 0.4 } 
-                  }}
+                  transition={{ opacity: { delay: 0.2, duration: 0.4 } }}
                   onLoad={imageLoaded}
                 >
-                  <Pokecard 
+                  <Pokecard
                     pokemon={pokemonData[getPokemonIndex(yourPokemonId)]}
                   />
                 </motion.div>
@@ -70,39 +69,37 @@ export default function Game() {
               <h2>vs</h2>
               {isVisible ? (
                 <CardWrapper
-                className={`${pulsing ? "pulse" : ""} loadable`}
-                style={{ width: "600px", background: "#ccc" }}
-              >
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  style={{ height: imageLoading ? "6rem" : "auto" }}
-                  animate={{
-                    height: imageLoading ? "6rem" : "auto",
-                    opacity: imageLoading ? 0 : 1,
-                  }}
-                  transition={
-                    { opacity: { delay: 0.2, duration: 0.4 } 
-                  }}
-                  onLoad={imageLoaded}
+                  className={`${pulsing ? "pulse" : ""} loadable`}
+                  style={{ width: "600px", background: "#ccc" }}
                 >
-                  <Pokecard
-                    pokemon= {pokemonData[computerPokemonIndex]}
-                  />
-                </motion.div>
-              </CardWrapper>
-              ) : <button onClick={handleClick}>Choose your opponent</button>}
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    style={{ height: imageLoading ? "6rem" : "auto" }}
+                    animate={{
+                      height: imageLoading ? "6rem" : "auto",
+                      opacity: imageLoading ? 0 : 1,
+                    }}
+                    transition={{ opacity: { delay: 0.2, duration: 0.4 } }}
+                    onLoad={imageLoaded}
+                  >
+                    <Pokecard pokemon={pokemonData[computerPokemonIndex]} />
+                  </motion.div>
+                </CardWrapper>
+              ) : (
+                  <button onClick={handleClick}>{PokeballImage}</button>
+              )}
             </GameWrapper>
           </AnimatePresence>
         </HeaderWrapper>
-       : null }
+      ) : null}
     </div>
   );
 }
 
 const HeaderWrapper = styled.div`
   margin-top: 40px;
-  h2{
-      //add transition here
+  h2 {
+    //add transition here
   }
 `;
 const GameWrapper = styled.div`
@@ -112,11 +109,8 @@ const GameWrapper = styled.div`
   grid-template-columns: 250px 50px 250px;
   gap: 10px;
   grid-auto-rows: minmax(100px, auto);
-  button{
-      border-radius: 40px;
-  }
-  h2{
-      //center vertically
+  button {
+    border-radius: 40px;
   }
 `;
 
@@ -125,7 +119,9 @@ const CardWrapper = styled("Pokecard")`
     width: 150px;
     height: 150px;
   }
-
+  button {
+      cursor: pointer;
+  }
   border-radius: 40px;
   min-width: 200px;
   max-width: 250px;
@@ -133,4 +129,3 @@ const CardWrapper = styled("Pokecard")`
   transition: 0.2s ease-in-out;
   gap: 200px;
 `;
-
