@@ -85,7 +85,7 @@ export default function Game() {
                   </motion.div>
                 </CardWrapper>
               ) : (
-                  <button onClick={handleClick}>{PokeballImage}</button>
+                  <button onClick={handleClick}>Choose your Pokemon!</button>
               )}
             </GameWrapper>
           </AnimatePresence>
