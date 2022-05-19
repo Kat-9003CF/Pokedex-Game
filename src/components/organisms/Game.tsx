@@ -18,6 +18,7 @@ export default function Game() {
   const [imageLoading, setImageLoading] = useState(true);
   const [pulsing, setPulsing] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
+  const [compChosen, setCompChosen] = useState(false);
 
   const imageLoaded = () => {
     setImageLoading(false);
@@ -28,8 +29,9 @@ export default function Game() {
     e.preventDefault();
     computerTurn();
     setIsVisible(true);
+    setCompChosen(true);
   }
-//   let computerChoice: newPokemon;
+  //   let computerChoice: newPokemon;
 
   function computerTurn() {
     let max: number = pokemonData.length;
@@ -40,7 +42,6 @@ export default function Game() {
 
   return (
     <div>
-        
       {yourPokemonId ? (
         <HeaderWrapper>
           (<h1>Battle!</h1>
@@ -85,15 +86,12 @@ export default function Game() {
                   </motion.div>
                 </CardWrapper>
               ) : (
-                <button onClick={handleClick}>
-                  Choose your opponent
-                </button>
+                  <button onClick={handleClick}>{PokeballImage}</button>
               )}
             </GameWrapper>
           </AnimatePresence>
         </HeaderWrapper>
       ) : null}
-    
     </div>
   );
 }
@@ -114,7 +112,6 @@ const GameWrapper = styled.div`
   button {
     border-radius: 40px;
   }
-
 `;
 
 const CardWrapper = styled("Pokecard")`
@@ -122,7 +119,9 @@ const CardWrapper = styled("Pokecard")`
     width: 150px;
     height: 150px;
   }
-
+  button {
+      cursor: pointer;
+  }
   border-radius: 40px;
   min-width: 200px;
   max-width: 250px;
