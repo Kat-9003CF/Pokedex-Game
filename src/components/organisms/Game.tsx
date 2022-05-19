@@ -5,7 +5,6 @@ import { animate, motion, AnimatePresence } from "framer-motion";
 import { useStore } from "../../../redux/store";
 import { getPokemonIndex } from "../../../services/helpers";
 import { useState } from "react";
-import PokeballImage from "../../../public/pokeball.svg";
 
 export default function Game() {
   const {
