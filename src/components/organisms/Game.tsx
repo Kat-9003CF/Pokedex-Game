@@ -5,6 +5,7 @@ import { animate, motion, AnimatePresence } from "framer-motion";
 import { useStore } from "../../../redux/store";
 import { getPokemonIndex } from "../../../services/helpers";
 import { useState } from "react";
+import { H1, H2, Paragraph } from "../../../styles/fonts";
 
 export default function Game() {
   const {
@@ -43,7 +44,7 @@ export default function Game() {
     <div>
       {yourPokemonId ? (
         <HeaderWrapper>
-          (<h1>Battle!</h1>
+          (<H1>Battle!</H1>
           <AnimatePresence>
             <GameWrapper>
               <CardWrapper
@@ -65,7 +66,7 @@ export default function Game() {
                   />
                 </motion.div>
               </CardWrapper>
-              <h2>vs</h2>
+              <H2>vs</H2>
               {isVisible ? (
                 <CardWrapper
                   className={`${pulsing ? "pulse" : ""} loadable`}

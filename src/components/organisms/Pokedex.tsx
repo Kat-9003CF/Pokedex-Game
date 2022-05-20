@@ -3,6 +3,8 @@ import { Pokecard, pokemonData } from "../atoms/index";
 import styled from "styled-components";
 import { animate, motion } from "framer-motion";
 import { useStore } from "../../../redux/store";
+import { H1, H2, Paragraph } from "../../../styles/fonts";
+
 
 export default function Pokedex() {
     const {yourPokemonId, setYourPokemonId} = useStore((state) => state);

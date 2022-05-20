@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
+    "typeRoots" : ["src/types"],
     "lib": [
       "dom",
       "dom.iterable",
@@ -22,9 +23,12 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "src/**/*",
+    "fonts/**/*.d.ts"
   ],
   "exclude": [
     "node_modules"
-  ]
+  ],
+  
 }

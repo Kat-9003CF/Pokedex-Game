@@ -1,21 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 import { useStore } from "../../../redux/store";
+import { H1, H2, Paragraph } from "../../../styles/fonts";
 const POKE_IMG = "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/";
-
 
 interface newPokemon {
   id: number;
   name: string;
   type: string;
-  level: number; 
+  level: number;
 }
 
-export default function Pokecard({pokemon}: {pokemon: newPokemon}) {
-  
+export default function Pokecard({ pokemon }: { pokemon: newPokemon }) {
   function format(id) {
-    let idString:string = id.toString();
-    let pokeID:string;
+    let idString: string = id.toString();
+    let pokeID: string;
     switch (idString.length) {
       case 3:
         pokeID = idString;
@@ -27,7 +26,7 @@ export default function Pokecard({pokemon}: {pokemon: newPokemon}) {
         pokeID = "00" + idString;
         break;
     }
-    return pokeID
+    return pokeID;
   }
 
   const pokeID = format(pokemon["id"]);
@@ -37,13 +36,11 @@ export default function Pokecard({pokemon}: {pokemon: newPokemon}) {
     return text.charAt(0).toUpperCase() + text.slice(1);
   }
 
-
-
   return (
     <CardWrapper>
-      <h2>{pokemon["name"]}</h2>
+      <H2>{pokemon["name"]}</H2>
       <img src={imgSrc} />
-      <p>Type: {pascalCase(pokemon["type"])}</p>
+      <Paragraph>Type: {pascalCase(pokemon["type"])}</Paragraph>
     </CardWrapper>
   );
 }
@@ -60,5 +57,4 @@ const CardWrapper = styled.div`
     height: 110px;
     margin: -10px;
   }
-  
 `;
