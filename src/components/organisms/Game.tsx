@@ -5,7 +5,6 @@ import { animate, motion, AnimatePresence } from "framer-motion";
 import { useStore } from "../../../redux/store";
 import { getPokemonIndex } from "../../../services/helpers";
 import { useState } from "react";
-import PokeballImage from "../../../public/pokeball.svg";
 
 export default function Game() {
   const {
@@ -13,12 +12,13 @@ export default function Game() {
     // setYourPokemonId,
     computerPokemonIndex,
     setComputerPokemonIndex,
+    compChosen, 
+    setCompChosen
   } = useStore((state) => state);
 
   const [imageLoading, setImageLoading] = useState(true);
   const [pulsing, setPulsing] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
-  const [compChosen, setCompChosen] = useState(false);
 
   const imageLoaded = () => {
     setImageLoading(false);
@@ -29,9 +29,8 @@ export default function Game() {
     e.preventDefault();
     computerTurn();
     setIsVisible(true);
-    setCompChosen(true);
+    setCompChosen();
   }
-  //   let computerChoice: newPokemon;
 
   function computerTurn() {
     let max: number = pokemonData.length;
@@ -86,7 +85,7 @@ export default function Game() {
                   </motion.div>
                 </CardWrapper>
               ) : (
-                  <button onClick={handleClick}>{PokeballImage}</button>
+                  <button onClick={handleClick}>Choose your Pokemon!</button>
               )}
             </GameWrapper>
           </AnimatePresence>
