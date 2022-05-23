@@ -1,43 +1,49 @@
 import React from "react";
 import { Pokecard, pokemonData } from "../atoms/index";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { animate, motion } from "framer-motion";
 import { useStore } from "../../../redux/store";
 
 export default function Pokedex() {
-    const {yourPokemonId, setYourPokemonId} = useStore((state) => state);
+  const { yourPokemonId, setYourPokemonId, compChosen } = useStore(
+    (state) => state
+  );
 
-    function handleClick(id:number){
-        setYourPokemonId(id)
-    }
+  function handleClick(id: number) {
+    compChosen ? null : setYourPokemonId(id);
+  }
 
   return (
     <PokedexWrapper>
       {pokemonData.map((p) => (
-        <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 1 }} >
-          <SingleCardWrapper onClick={() => handleClick(p.id)}>
-            <Pokecard pokemon = {p} />
-          </SingleCardWrapper>
-        </motion.div>
+        <SingleCardWrapper
+          whileHover={{ scale: !compChosen ? 1.1 : 1 }}
+          onClick={() => handleClick(p.id)}
+          compChosen={compChosen}
+        >
+          <Pokecard pokemon={p} />
+        </SingleCardWrapper>
       ))}
     </PokedexWrapper>
   );
 }
-const SingleCardWrapper = styled.div`
+
+const SingleCardWrapper = styled(motion.div)`
   background-color: ${({ theme }) => theme.colours.cardBg};
   border: 1px solid ${({ theme }) => theme.colours.borderGrey};
   border-radius: 40px;
   min-width: 200px;
   max-width: 150px;
   box-shadow: 7px 10px 12px -5px rgba(0, 0, 0, 0.56);
-  transition: 0.2s ease-in-out;
 
-  &:hover {
-    transition: 0.2s ease-in-out;
-    background-color: ${({ theme }) => theme.colours.cardHover};
-    box-shadow: 15px 18px 20px -5px rgba(0, 0, 0, 1);
-    cursor: pointer;
-  }
+  ${(props) =>
+    (props.compChosen === false) && css`
+      &:hover {
+        background-color: ${({ theme }) => theme.colours.cardHover};
+        box-shadow: 15px 18px 20px -5px rgba(0, 0, 0, 1);
+        cursor: pointer;
+      }
+    `}
 `;
 
 const PokedexWrapper = styled.div`

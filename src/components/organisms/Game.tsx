@@ -12,12 +12,13 @@ export default function Game() {
     // setYourPokemonId,
     computerPokemonIndex,
     setComputerPokemonIndex,
+    compChosen, 
+    setCompChosen
   } = useStore((state) => state);
 
   const [imageLoading, setImageLoading] = useState(true);
   const [pulsing, setPulsing] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
-  const [compChosen, setCompChosen] = useState(false);
 
   const imageLoaded = () => {
     setImageLoading(false);
@@ -28,9 +29,8 @@ export default function Game() {
     e.preventDefault();
     computerTurn();
     setIsVisible(true);
-    setCompChosen(true);
+    setCompChosen();
   }
-  //   let computerChoice: newPokemon;
 
   function computerTurn() {
     let max: number = pokemonData.length;
