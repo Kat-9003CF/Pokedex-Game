@@ -17,6 +17,7 @@ function App() {
         <Wrapper>
           <h1>Pokedex Game</h1>
           <Pokedex />
+          <Game />
         </Wrapper>
       </Container>
 
