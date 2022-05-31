@@ -43,7 +43,7 @@ export default function Game() {
     <div>
       {yourPokemonId ? (
         <HeaderWrapper>
-          (<h1>Battle!</h1>
+          <h1>Battle!</h1>
           <AnimatePresence>
             <GameWrapper>
               <CardWrapper
