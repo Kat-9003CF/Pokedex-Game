@@ -51,14 +51,14 @@ export default function Pokecard({pokemon}: {pokemon: newPokemon}) {
 const CardWrapper = styled.div`
   text-align: center;
   h2 {
-    font-size: 170%;
+    font-size: 150%;
   }
   p {
-    font-size: 130%;
+    font-size: 110%;
   }
   img {
-    height: 110px;
-    margin: -10px;
+    height: 120px;
+    margin: -20px;
   }
   
 `;

@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Pokecard, pokemonData, Pokedex, Game } from "../src/components/atoms/index";
 import styled from "styled-components";
+import Container from "../src/components/atoms/Container";
+
 
 function App() {
   const [pokemonCards, setPokemonCards] = useState(pokemonData);
@@ -11,23 +13,22 @@ function App() {
 
   return (
     <main>
-      <Wrapper>
-        <h1>Pokedex Game</h1>
-        <Pokedex />
-        <Game />
-      </Wrapper>
+      <Container>
+        <Wrapper>
+          <h1>Pokedex Game</h1>
+          <Pokedex />
+        </Wrapper>
+      </Container>
+
     </main>
   );
 }
 
 export default App;
 const Wrapper = styled.div`
-  position: absolute;
-  background-color: ${({ theme }) => theme.colours.background};
-  height: 100vh;
-  width: 100vw;
   h1,
-  h2, p {
+  h2,
+  p {
     font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
       "Lucida Sans", Arial, sans-serif;
     text-align: center;
