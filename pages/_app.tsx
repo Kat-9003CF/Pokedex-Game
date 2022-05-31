@@ -3,6 +3,8 @@ import { AppProps } from "next/app";
 import { ThemeProvider } from "styled-components";
 import { colours } from "../styles/theme";
 import { useState } from "react";
+import "../styles/globals.css";
+
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

@@ -20,8 +20,8 @@ const SingleCardWrapper = styled.div`
   background-color: ${({ theme }) => theme.colours.cardBg};
   border: 1px solid ${({ theme }) => theme.colours.borderGrey};
   border-radius: 40px;
-  min-width: 200px;
-  max-width: 250px;
+  min-width: 175px;
+  max-width: 200px;
   box-shadow: 7px 10px 12px -5px rgba(0, 0, 0, 0.56);
   transition: 0.2s ease-in-out;
 
