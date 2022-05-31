@@ -29,22 +29,7 @@ export default function Pokedex() {
 }
 
 const SingleCardWrapper = styled(motion.div)`
-  background-color: ${({ theme }) => theme.colours.cardBg};
-  border: 1px solid ${({ theme }) => theme.colours.borderGrey};
-  border-radius: 40px;
-  min-width: 175px;
-  max-width: 200px;
 
-  box-shadow: 7px 10px 12px -5px rgba(0, 0, 0, 0.56);
-
-  ${(props) =>
-    (props.compChosen === false) && css`
-      &:hover {
-        background-color: ${({ theme }) => theme.colours.cardHover};
-        box-shadow: 15px 18px 20px -5px rgba(0, 0, 0, 1);
-        cursor: pointer;
-      }
-    `}
 `;
 
 const PokedexWrapper = styled.div`

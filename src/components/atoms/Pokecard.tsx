@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import { useStore } from "../../../redux/store";
 const POKE_IMG = "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/";
 
@@ -49,6 +49,7 @@ export default function Pokecard({pokemon}: {pokemon: newPokemon}) {
 }
 
 const CardWrapper = styled.div`
+height: 175px;
   text-align: center;
   h2 {
     font-size: 150%;
@@ -60,5 +61,19 @@ const CardWrapper = styled.div`
     height: 120px;
     margin: -20px;
   }
-  
+  background-color: ${({ theme }) => theme.colours.cardBg};
+  border: 1px solid ${({ theme }) => theme.colours.borderGrey};
+  border-radius: 40px;
+  min-width: 165px;
+  max-width: 185px;
+  box-shadow: 7px 10px 12px -5px rgba(0, 0, 0, 0.56);
+
+  ${(props) =>
+    (props.compChosen === false) && css`
+      &:hover {
+        background-color: ${({ theme }) => theme.colours.cardHover};
+        box-shadow: 15px 18px 20px -5px rgba(0, 0, 0, 1);
+        cursor: pointer;
+      }
+    `}
 `;
